@@ -26,6 +26,11 @@ export class EditorInfo extends Component {
               ? this.props.selectedItem._fields[0].labels[0]
               : ''
           }
+          relationshipType={
+            this.props.selectedItem._fields[0].type
+              ? this.props.selectedItem._fields[0].type
+              : ''
+          }
         />
       </div>
     ) : (
