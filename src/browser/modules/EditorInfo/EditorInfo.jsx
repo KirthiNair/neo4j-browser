@@ -10,9 +10,9 @@ import {
   Drawer,
   DrawerHeader,
   DrawerBody,
-  DrawerSection
+  DrawerSection,
+  DrawerSectionBody
 } from 'browser-components/drawer/index'
-import { EntityType } from './EntityType'
 
 export class EditorInfo extends Component {
   render () {
@@ -28,7 +28,9 @@ export class EditorInfo extends Component {
         <DrawerHeader>Editor</DrawerHeader>
         <DrawerBody>
           <DrawerSection>
-            <EntityType itemType='Canvas' />
+            <DrawerSectionBody>
+              Please select a node or relationship
+            </DrawerSectionBody>
           </DrawerSection>
         </DrawerBody>
       </Drawer>
