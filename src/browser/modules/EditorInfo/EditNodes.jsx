@@ -1,18 +1,17 @@
-/*
- * This module depicts the behaviour of the edit drawer that displays the node relationship
- * properties
- */
+/**
+* This module depicts the behaviour of the edit drawer that displays
+* the all drawerSections of edit drawer
+*/
 
 import React, { Component } from 'react'
 import {
   Drawer,
   DrawerBody,
   DrawerHeader,
-  DrawerSection,
-  DrawerSectionBody,
-  DrawerSubHeader
+  DrawerSection
 } from 'browser-components/drawer'
 
+import { ViewProperties } from './ViewProperties'
 import * as _ from 'lodash'
 import { getStringValue } from './utils'
 import { EntityType } from './EntityType'
@@ -20,25 +19,13 @@ import { NodeLabel } from './NodeLabel'
 
 export class EditNodes extends Component {
   render () {
-    let content = null
-    content = _.map(this.props.nodeProperties, (value, key) => {
-      return (
-        <div key={key}>
-          {key}:{getStringValue(value)}
-        </div>
-      )
-    })
-
     return (
       <Drawer id='db-drawer'>
         <DrawerHeader>Editor</DrawerHeader>
         <DrawerBody>
-          <DrawerSection>
-            <EntityType itemType={this.props.entityType} />
-            <DrawerSubHeader> Properties</DrawerSubHeader>
-            <DrawerSectionBody>{content}</DrawerSectionBody>
-            <NodeLabel nodeLabel={this.props.nodeLabel} />
-          </DrawerSection>
+          <NodeLabel nodeLabel={this.props.nodeLabel} />
+          <ViewProperties ShowProperties={this.props.nodeProperties} />
+          <EntityType itemType={this.props.entityType} />
         </DrawerBody>
       </Drawer>
     )
