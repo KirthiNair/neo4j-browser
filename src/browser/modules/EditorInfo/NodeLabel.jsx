@@ -9,16 +9,16 @@ import {
 } from 'browser-components/drawer'
 import * as _ from 'lodash'
 
-export const NodeLabel = props => {
-  let labels = _.map(props.nodeLabel, label => {
-    return label || null
-  })
-  return labels.length > 0 ? (
+export const NodeLabel = ({ nodeLabel = [] }) => {
+  const noLabels = nodeLabel.length > 0 ? null : 'Selected node has no labels.'
+
+  return (
     <DrawerSection>
-      <DrawerSubHeader>Node Label</DrawerSubHeader>
-      {_.map(labels, value => {
-        return <DrawerSectionBody>{value}</DrawerSectionBody>
+      <DrawerSubHeader>Node Labels</DrawerSubHeader>
+      {noLabels}
+      {_.map(nodeLabel, value => {
+        return <DrawerSectionBody key={value}>{value}</DrawerSectionBody>
       })}
     </DrawerSection>
-  ) : null
+  )
 }
