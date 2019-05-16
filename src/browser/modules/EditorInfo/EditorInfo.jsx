@@ -21,11 +21,7 @@ export class EditorInfo extends Component {
         <EditNodes
           nodeProperties={this.props.selectedItem._fields[0].properties}
           entityType={this.props.entityType}
-          nodeLabel={
-            this.props.selectedItem._fields[0].labels
-              ? this.props.selectedItem._fields[0].labels[0]
-              : ''
-          }
+          nodeLabel={this.props.selectedItem._fields[0].labels}
         />
       </div>
     ) : (

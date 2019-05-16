@@ -7,14 +7,18 @@ import {
   DrawerSection,
   DrawerSectionBody
 } from 'browser-components/drawer'
+import * as _ from 'lodash'
 
-export const NodeLabel = ({ nodeLabel = '' }) => {
-  return nodeLabel ? (
+export const NodeLabel = props => {
+  let labels = _.map(props.nodeLabel, label => {
+    return label || null
+  })
+  return labels.length > 0 ? (
     <DrawerSection>
       <DrawerSubHeader>Node Label</DrawerSubHeader>
-      <DrawerSectionBody>{nodeLabel}</DrawerSectionBody>
+      {_.map(labels, value => {
+        return <DrawerSectionBody>{value}</DrawerSectionBody>
+      })}
     </DrawerSection>
-  ) : (
-    ''
-  )
+  ) : null
 }
