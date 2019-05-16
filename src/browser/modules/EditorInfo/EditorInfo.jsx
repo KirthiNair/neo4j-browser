@@ -10,35 +10,39 @@ import {
   Drawer,
   DrawerHeader,
   DrawerBody,
-  DrawerSection
+  DrawerSection,
+  DrawerSectionBody
 } from 'browser-components/drawer/index'
-import { EntityType } from './EntityType'
+import { EditRelationship } from './EditRelationship'
 
 export class EditorInfo extends Component {
   render () {
     return this.props.selectedItem ? (
-      <div>
+      this.props.entityType === 'node' ? (
         <EditNodes
           nodeProperties={this.props.selectedItem._fields[0].properties}
           entityType={this.props.entityType}
-          nodeLabel={
-            this.props.selectedItem._fields[0].labels
-              ? this.props.selectedItem._fields[0].labels[0]
-              : ''
-          }
+          nodeLabel={this.props.selectedItem._fields[0].labels}
+        />
+      ) : (
+        <EditRelationship
+          nodeProperties={this.props.selectedItem._fields[0].properties}
+          entityType={this.props.entityType}
           relationshipType={
             this.props.selectedItem._fields[0].type
               ? this.props.selectedItem._fields[0].type
               : ''
           }
         />
-      </div>
+      )
     ) : (
       <Drawer id='db-drawer'>
         <DrawerHeader>Editor</DrawerHeader>
         <DrawerBody>
           <DrawerSection>
-            <EntityType itemType='Canvas' />
+            <DrawerSectionBody>
+              Please select a node or relationship
+            </DrawerSectionBody>
           </DrawerSection>
         </DrawerBody>
       </Drawer>

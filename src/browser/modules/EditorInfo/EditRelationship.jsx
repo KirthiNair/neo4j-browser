@@ -8,16 +8,16 @@ import { Drawer, DrawerBody, DrawerHeader } from 'browser-components/drawer'
 import { ViewProperties } from './ViewProperties'
 import * as _ from 'lodash'
 import { EntityType } from './EntityType'
-import { NodeLabel } from './NodeLabel'
+import { RelationshipType } from './RelationshipType'
 
-export class EditNodes extends Component {
+export class EditRelationship extends Component {
   render () {
     return (
       <Drawer id='db-drawer'>
         <DrawerHeader>Editor</DrawerHeader>
         <DrawerBody>
           <EntityType itemType={this.props.entityType} />
-          <NodeLabel nodeLabel={this.props.nodeLabel} />
+          <RelationshipType relationshipType={this.props.relationshipType} />
           <ViewProperties ShowProperties={this.props.nodeProperties} />
         </DrawerBody>
       </Drawer>
